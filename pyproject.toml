@@ -1,0 +1,39 @@
+[project]
+name = "trader"
+version = "0.1.0"
+description = "Paper-trading research system for NSE equities: data, strategies, risk, paper broker, metrics"
+readme = "README.md"
+authors = [
+    { name = "Rudray Dave", email = "rudraydave@gmail.com" }
+]
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    "httpx>=0.28",
+    "numpy>=2.2",
+    "pandas>=2.2,<3",
+    "pyarrow>=19",
+    "pydantic>=2.11",
+    "pydantic-settings>=2.6",
+    "rich>=13",
+    "typer>=0.25",
+]
+
+[project.scripts]
+trader = "trader.cli:app"
+
+[build-system]
+requires = ["uv_build>=0.10.5,<0.11.0"]
+build-backend = "uv_build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra -m 'not network'"
+markers = [
+    "network: tests that call real external endpoints (opt in with: pytest -m network)",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "ta-lib>=0.6",
+]

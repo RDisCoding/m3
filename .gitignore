@@ -1,0 +1,23 @@
+# Secrets: the Upstox analytics token and any other keys live only in .env files
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+build/
+dist/
+
+# Local market data, logs and run artifacts (re-creatable, never committed)
+/data/
+/runs/
+
+# OS
+.DS_Store
+Thumbs.db
